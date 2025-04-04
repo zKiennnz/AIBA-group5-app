@@ -10,7 +10,7 @@ from sklearn.ensemble import StackingRegressor
 from scipy import stats
 
 # Đọc dữ liệu
-df = pd.read_csv('cityu10d_train_dataset(1).csv')
+df = pd.read_csv('cityu10d_train_dataset (1).csv')
 
 # Loại bỏ các biến không liên quan (ID, ApplicationDate)
 df_cleaned = df.drop(columns=['ID', 'ApplicationDate'])
@@ -133,24 +133,3 @@ if st.button("Predict"):
         st.success("Loan Approved!")
     else:
         st.error("Loan Rejected.")
-
-!ngrok config add-authtoken [2vFJIAx0PepfeFq3f1l9J30uQvG_2HSWj751XDNJSG3PTmrLc]
-
-from pyngrok import ngrok
-import threading
-import time
-
-# Start Streamlit in a separate thread
-def run_streamlit():
-    !streamlit run app.py --server.port 8080 > /dev/null 2>&1
-
-thread = threading.Thread(target=run_streamlit)
-thread.daemon = True
-thread.start()
-
-# Wait a bit for the server to start
-time.sleep(3)
-
-# Create a public URL with ngrok
-public_url = ngrok.connect(8080)
-print(f"Access your Streamlit app here: {public_url}")
