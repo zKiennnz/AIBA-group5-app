@@ -86,8 +86,6 @@ with open('decision_tree_pipeline.pkl', 'wb') as file:
 
 print("Stacking trained and saved to stacking_deploy.pkl")
 
-!pip install pyngrok
-
 %%writefile app.py
 
 import streamlit as st
